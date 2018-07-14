@@ -4,21 +4,21 @@ import { RestProvider } from '../../providers/rest/rest';
 
 
 @Component({
-  selector: 'page-about',
-  templateUrl: 'about.html'
+  selector: 'page-trains',
+  templateUrl: 'trains.html'
 })
-export class AboutPage {
-  events: any;
+export class TrainsPage {
+  trains: any;
 
   constructor(public navCtrl: NavController, public restProvider: RestProvider) {
-    this.getEvents()
+    this.getFirstTrains();
   }
 
-  getEvents() {
-    this.restProvider.getEvents()
+  getFirstTrains() {
+    this.restProvider.getFirstTrains()
       .then(data => {
-        this.events = data;
-        console.log(this.events);
+        this.trains = data;
+        console.log(this.trains);
       })
   }
 
@@ -26,7 +26,7 @@ export class AboutPage {
     console.log('Begin async operation', refresher);
 
     setTimeout(() => {
-      this.getEvents();
+      this.getFirstTrains();
       console.log('Async operation has ended');
       refresher.complete();
     }, 2000);

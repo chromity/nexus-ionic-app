@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Station Network
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list inset>
+    <ion-card *ngFor="let platform of platforms">
+      <ion-card-header>{{platform.stationID}}</ion-card-header>
+      <ion-card-content *ngIf="platform.volume <= 10">Light amount of passengers</ion-card-content>
+      <ion-card-content *ngIf="platform.volume <= 20 && platform.volume > 10">Moderate amount of passengers</ion-card-content>
+      <ion-card-content *ngIf="platform.volume > 20">Crowded</ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

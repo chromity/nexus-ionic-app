@@ -1,11 +1,34 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      About
+      Events
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
 
+  <ion-list inset>
+    <ion-card *ngFor="let event of events">
+      <img *ngIf="event.eventType == 'Music'" src="./assets/imgs/music.jpg"/>
+      <img *ngIf="event.eventType == 'Health'" src="./assets/imgs/health.jpg"/>
+      <img *ngIf="event.eventType == 'Outdoor'" src="./assets/imgs/outdoor.png"/>
+      <ion-card-content>
+        <ion-card-title>
+          {{event.eventName}}
+        </ion-card-title>
+        <p>
+          {{event.eventDescription}}<br/>Location: {{event.eventLocation}}<br />Date: {{event.eventDate}}
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
 </ion-content>

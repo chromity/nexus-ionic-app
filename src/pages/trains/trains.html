@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Train Network
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list inset>
+    <ion-card *ngFor="let train of trains">
+      <ion-card-header>LRT1 Train {{train.trainNumber}} - Cabin {{train.order}}</ion-card-header>
+      <ion-card-content *ngIf="train.trainNumber == '2'">
+        Speed: {{train.speed}}km/h<span><br/></span>Temperature: {{train.temperature}} degrees
+        celcius<span><br/></span>Passenger Sentiment (In terms of Joy): {{train.sentiment}}
+        <br />Destination: Baclaran to Libertad
+      </ion-card-content>
+      <ion-card-content *ngIf="train.trainNumber == '1'">
+        Speed: {{train.speed}}km/h<span><br/></span>Temperature: {{train.temperature}} degrees
+        celcius<span><br/></span>Passenger Sentiment (In terms of Joy): {{train.sentiment}}
+        <br />Destination: Roosevelt to Balintawak
+      </ion-card-content>
+      <ion-card-content *ngIf="train.volume == 0">Volume: Light</ion-card-content>
+      <ion-card-content *ngIf="train.volume > 0">Volume: Moderate</ion-card-content>
+      <ion-card-content *ngIf="train.volume > 10">Volume: Crowded</ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

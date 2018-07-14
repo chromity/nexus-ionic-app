@@ -1,17 +1,34 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contact
+      Promotions
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
+<ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list inset>
+    <ion-card *ngFor="let promotion of promotions">
+      <img *ngIf="promotion.promotionType == 'Technology'" src="./assets/imgs/technology.jpg"/>
+      <img *ngIf="promotion.promotionType == 'Food'" src="./assets/imgs/food.jpg"/>
+      <img *ngIf="promotion.promotionType == 'Mall'" src="./assets/imgs/mall.jpg"/>
+      <ion-card-content>
+        <ion-card-title>
+          {{promotion.promotionName}}
+        </ion-card-title>
+        <p>
+          {{promotion.promoter}}<br />{{promotion.promotionDescription}}<br/>Location: Near {{promotion.stationNear}}<br />
+        </p>
+      </ion-card-content>
+    </ion-card>
   </ion-list>
 </ion-content>

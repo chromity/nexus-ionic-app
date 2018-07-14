@@ -2,23 +2,22 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 
-
 @Component({
-  selector: 'page-about',
-  templateUrl: 'about.html'
+  selector: 'page-stations',
+  templateUrl: 'stations.html'
 })
-export class AboutPage {
-  events: any;
+export class StationsPage {
+  platforms: any;
 
   constructor(public navCtrl: NavController, public restProvider: RestProvider) {
-    this.getEvents()
+    this.getPlatforms();
   }
 
-  getEvents() {
-    this.restProvider.getEvents()
+  getPlatforms() {
+    this.restProvider.getPlatform()
       .then(data => {
-        this.events = data;
-        console.log(this.events);
+        this.platforms = data;
+        console.log(this.platforms);
       })
   }
 
@@ -26,9 +25,10 @@ export class AboutPage {
     console.log('Begin async operation', refresher);
 
     setTimeout(() => {
-      this.getEvents();
+      this.getPlatforms();
       console.log('Async operation has ended');
       refresher.complete();
     }, 2000);
   }
+
 }
