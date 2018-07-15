@@ -10,6 +10,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { NewsPage } from '../pages/news/news';
 import { StationsPage } from '../pages/stations/stations';
 import { TrainsPage } from '../pages/trains/trains';
+import { HelpPage} from '../pages/help/help';
+import { InformationPage } from '../pages/information/information';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -28,7 +30,9 @@ import { IonicStorageModule } from '@ionic/storage';
     TabsPage,
     NewsPage,
     TrainsPage,
-    StationsPage
+    StationsPage,
+    InformationPage,
+    HelpPage
   ],
   imports: [
     BrowserModule,
@@ -45,7 +49,9 @@ import { IonicStorageModule } from '@ionic/storage';
     TabsPage,
     NewsPage,
     TrainsPage,
-    StationsPage
+    StationsPage,
+    InformationPage,
+    HelpPage
   ],
   providers: [
     StatusBar,

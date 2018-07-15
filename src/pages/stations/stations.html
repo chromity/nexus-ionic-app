@@ -19,8 +19,8 @@
   <ion-list inset>
     <ion-card *ngFor="let platform of platforms">
       <ion-card-header>{{platform.stationID}}</ion-card-header>
-      <ion-card-content *ngIf="platform.volume <= 10">Light amount of passengers</ion-card-content>
-      <ion-card-content *ngIf="platform.volume <= 20 && platform.volume > 10">Moderate amount of passengers</ion-card-content>
+      <ion-card-content *ngIf="platform.volume <= 10">Light volume of passengers</ion-card-content>
+      <ion-card-content *ngIf="platform.volume <= 20 && platform.volume > 10">Moderate volume of passengers</ion-card-content>
       <ion-card-content *ngIf="platform.volume > 20">Crowded</ion-card-content>
     </ion-card>
   </ion-list>
